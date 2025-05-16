@@ -34,6 +34,7 @@
             btnLoadMoon = new Button();
             btnBrowse = new Button();
             btnExperimental = new Button();
+            btnRestore = new Button();
             SuspendLayout();
             // 
             // btnArchiveFolder
@@ -93,11 +94,22 @@
             btnExperimental.UseVisualStyleBackColor = true;
             btnExperimental.Click += btnExperimental_Click;
             // 
+            // btnRestore
+            // 
+            btnRestore.Location = new Point(53, 305);
+            btnRestore.Name = "btnRestore";
+            btnRestore.Size = new Size(683, 57);
+            btnRestore.TabIndex = 6;
+            btnRestore.Text = "RESTORE ARCHIVE";
+            btnRestore.UseVisualStyleBackColor = true;
+            btnRestore.Click += btnRestore_Click;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(954, 533);
+            Controls.Add(btnRestore);
             Controls.Add(btnExperimental);
             Controls.Add(btnBrowse);
             Controls.Add(btnLoadMoon);
@@ -118,5 +130,6 @@
         private Button btnLoadMoon;
         private Button btnBrowse;
         private Button btnExperimental;
+        private Button btnRestore;
     }
 }

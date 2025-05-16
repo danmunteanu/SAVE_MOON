@@ -69,7 +69,7 @@ namespace SAVE_GAMES
 
             using (SaveFileDialog saveDialog = new SaveFileDialog())
             {
-                
+
                 string timestamp = DateTime.Now.ToString("yyyy-MM-dd");
                 saveDialog.Filter = "ZIP archive (*.zip)|*.zip";
 
@@ -82,7 +82,7 @@ namespace SAVE_GAMES
                     try
                     {
                         string tempRoot = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString());
-                        string tempFolder = Path.Combine(tempRoot, "Moon Studios");
+                        string tempFolder = Path.Combine(tempRoot, $"{archiveName}");
 
                         btnArchiveFolder.Enabled = false;
 
@@ -125,6 +125,50 @@ namespace SAVE_GAMES
         {
             mSelectedFolderIndex = 1;
             txtFolder.Text = mFolders[mSelectedFolderIndex].Item1;
+        }
+
+        private void btnRestore_Click(object sender, EventArgs e)
+        {
+            string restoreToFolder = mFolders[mSelectedFolderIndex].Item1;
+
+            // Define the restore folder (make sure this is set elsewhere or hardcoded here)
+            //string restoreToFolder = @"c:\Users\Dan Beton\OneDrive\Desktop\TEMP\"; // replace with your actual folder path
+
+            // Ensure the restore folder exists; create if it doesn't
+            if (!Directory.Exists(restoreToFolder))
+            {
+                Directory.CreateDirectory(restoreToFolder);
+            }
+
+            // Open file dialog to select a .zip file
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.Filter = "ZIP files (*.zip)|*.zip";
+                openFileDialog.Title = "Select a ZIP file to restore";
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        // Extract the selected zip file to the restore folder
+                        ZipFile.ExtractToDirectory(openFileDialog.FileName, restoreToFolder, overwriteFiles: true);
+
+                        MessageBox.Show("Restore completed successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (IOException ioEx)
+                    {
+                        MessageBox.Show($"IO error during extraction: {ioEx.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    catch (UnauthorizedAccessException uaEx)
+                    {
+                        MessageBox.Show($"Access error during extraction: {uaEx.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Unexpected error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
         }
     }
 }
