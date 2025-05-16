@@ -79,28 +79,19 @@ namespace SAVE_GAMES
                 if (saveDialog.ShowDialog() == DialogResult.OK)
                 {
                     string destinationZipPath = saveDialog.FileName;
-
                     try
                     {
-                        if (Directory.Exists(folder))
-                        {
-                            string tempRoot = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString());
-                            string tempFolder = Path.Combine(tempRoot, "Moon Studios");
+                        string tempRoot = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString());
+                        string tempFolder = Path.Combine(tempRoot, "Moon Studios");
 
-                            btnArchiveFolder.Enabled = false;
+                        btnArchiveFolder.Enabled = false;
 
-                            DirectoryCopy(folder, tempFolder, true);
-                            ZipFile.CreateFromDirectory(tempRoot, destinationZipPath);
-                            Directory.Delete(tempRoot, true);
+                        DirectoryCopy(folder, tempFolder, true);
+                        ZipFile.CreateFromDirectory(tempRoot, destinationZipPath);
+                        Directory.Delete(tempRoot, true);
 
-                            btnArchiveFolder.Enabled = true;
-                            MessageBox.Show("Archive saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                        }
-                        else
-                        {
-                            MessageBox.Show($"The folder \"{folder}\" was not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
+                        btnArchiveFolder.Enabled = true;
+                        MessageBox.Show("Archive saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch (Exception ex)
                     {
