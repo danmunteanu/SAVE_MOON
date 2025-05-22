@@ -19,6 +19,7 @@ namespace SAVE_GAMES
             mFolders.Add(new(folderExperimental, "experimental"));
 
             mSelectedFolderIndex = 0;
+            txtFolder.Text = mFolders[mSelectedFolderIndex].Item1;
         }
 
         public MainForm()
