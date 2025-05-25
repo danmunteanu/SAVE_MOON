@@ -38,6 +38,7 @@
             btnEdit = new Button();
             btnRemove = new Button();
             btnClear = new Button();
+            btnDefaults = new Button();
             SuspendLayout();
             // 
             // btnArchive
@@ -79,6 +80,7 @@
             // 
             // btnRestore
             // 
+            btnRestore.Enabled = false;
             btnRestore.Location = new Point(583, 221);
             btnRestore.Name = "btnRestore";
             btnRestore.Size = new Size(219, 57);
@@ -137,11 +139,23 @@
             btnClear.UseVisualStyleBackColor = true;
             btnClear.Click += btnClear_Click;
             // 
+            // btnDefaults
+            // 
+            btnDefaults.Font = new Font("Segoe UI", 8F);
+            btnDefaults.Location = new Point(607, 55);
+            btnDefaults.Name = "btnDefaults";
+            btnDefaults.Size = new Size(155, 34);
+            btnDefaults.TabIndex = 12;
+            btnDefaults.Text = "LOAD DEFAULTS";
+            btnDefaults.UseVisualStyleBackColor = true;
+            btnDefaults.Click += btnDefaults_Click;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(847, 333);
+            Controls.Add(btnDefaults);
             Controls.Add(btnClear);
             Controls.Add(btnRemove);
             Controls.Add(btnEdit);
@@ -171,5 +185,6 @@
         private Button btnEdit;
         private Button btnRemove;
         private Button btnClear;
+        private Button btnDefaults;
     }
 }

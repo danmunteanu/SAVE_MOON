@@ -31,7 +31,17 @@ namespace SaveFolders
 
             LoadSettings();
 
-            RegisterFolders();
+            //RegisterFolders();
+
+            LoadFolders();
+
+            this.CenterToParent();
+        }
+
+        private void LoadFolders(bool clear = true)
+        {
+            if (clear)
+                cmbFolder.Items.Clear();
 
             for (int idx = 0; idx < mFolders.Count; idx++)
             {
@@ -39,10 +49,6 @@ namespace SaveFolders
             }
             if (cmbFolder.Items.Count > 0)
                 cmbFolder.SelectedIndex = 0;
-
-
-
-            this.CenterToParent();
         }
 
         private void SaveSettings()
@@ -272,10 +278,26 @@ namespace SaveFolders
             {
                 mFolders.Clear();
                 cmbFolder.Items.Clear();
-            }
-            else
+            }            
+        }
+
+        private void btnDefaults_Click(object sender, EventArgs e)
+        {
+            var result = MessageBox.Show(
+                    "Are you sure you want to load default folders?",
+                    "Confirm Defaults",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+                );
+
+            if (result == DialogResult.Yes)
             {
-                // Cancelled
+                mFolders.Clear();
+                cmbFolder.Items.Clear();
+
+                RegisterFolders();
+                LoadFolders();
+
             }
         }
     }
