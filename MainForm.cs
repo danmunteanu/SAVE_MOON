@@ -1,10 +1,13 @@
 using System.IO.Compression;
 
-namespace SAVE_GAMES
+namespace SaveFolders
 {
     public partial class MainForm : Form
     {
-        private List<(string, string)> mFolders = new();
+        List<SaveFolderInfo> mFolders = new();
+
+        //private List<(string, string)> mFolders = new();
+
         private int mSelectedFolderIndex = -1;
 
         private void RegisterFolders()
@@ -19,17 +22,39 @@ namespace SAVE_GAMES
             mFolders.Add(new(folderExperimental, "experimental"));
 
             mSelectedFolderIndex = 0;
-            txtFolder.Text = mFolders[mSelectedFolderIndex].Item1;
+            txtFolder.Text = mFolders[mSelectedFolderIndex].Path;
         }
 
         public MainForm()
         {
             InitializeComponent();
 
+            LoadSettings();
+
             RegisterFolders();
+
+            for (int idx = 0; idx < mFolders.Count; idx++)
+            {
+                cmbFolder.Items.Add(mFolders.ElementAt(idx).Desc);
+            }
+            if (cmbFolder.Items.Count > 0)
+                cmbFolder.SelectedIndex = 0;
+
+
 
             this.CenterToParent();
         }
+
+        private void SaveSettings()
+        {
+            SettingsManager.SaveFolderList(mFolders);
+        }
+
+        private void LoadSettings()
+        {
+            mFolders = SettingsManager.LoadFolderList();
+        }
+
 
         private static void DirectoryCopy(string sourceDirName, string destDirName, bool copySubDirs)
         {
@@ -59,8 +84,8 @@ namespace SAVE_GAMES
 
         private void btnSaveMoon_Click(object sender, EventArgs e)
         {
-            string folder = mFolders[mSelectedFolderIndex].Item1;
-            string archiveName = mFolders[mSelectedFolderIndex].Item2;
+            string folder = mFolders[mSelectedFolderIndex].Path;
+            string archiveName = mFolders[mSelectedFolderIndex].Desc;
 
             if (!Directory.Exists(folder))
             {
@@ -85,13 +110,13 @@ namespace SAVE_GAMES
                         string tempRoot = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString());
                         string tempFolder = Path.Combine(tempRoot, $"{archiveName}");
 
-                        btnArchiveFolder.Enabled = false;
+                        btnArchive.Enabled = false;
 
                         DirectoryCopy(folder, tempFolder, true);
                         ZipFile.CreateFromDirectory(tempRoot, destinationZipPath);
                         Directory.Delete(tempRoot, true);
 
-                        btnArchiveFolder.Enabled = true;
+                        btnArchive.Enabled = true;
                         MessageBox.Show("Archive saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch (Exception ex)
@@ -105,7 +130,7 @@ namespace SAVE_GAMES
         private void btnLoadMoon_Click(object sender, EventArgs e)
         {
             mSelectedFolderIndex = 0;
-            txtFolder.Text = mFolders[mSelectedFolderIndex].Item1;
+            txtFolder.Text = mFolders[mSelectedFolderIndex].Path;
         }
 
         private void btnBrowse_Click(object sender, EventArgs e)
@@ -125,12 +150,12 @@ namespace SAVE_GAMES
         private void btnExperimental_Click(object sender, EventArgs e)
         {
             mSelectedFolderIndex = 1;
-            txtFolder.Text = mFolders[mSelectedFolderIndex].Item1;
+            txtFolder.Text = mFolders[mSelectedFolderIndex].Path;
         }
 
         private void btnRestore_Click(object sender, EventArgs e)
         {
-            string restoreToFolder = mFolders[mSelectedFolderIndex].Item1;
+            string restoreToFolder = mFolders[mSelectedFolderIndex].Path;
 
             // Define the restore folder (make sure this is set elsewhere or hardcoded here)
             //string restoreToFolder = @"c:\Users\Dan Beton\OneDrive\Desktop\TEMP\"; // replace with your actual folder path
@@ -169,6 +194,88 @@ namespace SAVE_GAMES
                         MessageBox.Show($"Unexpected error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
+            }
+        }
+
+        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            SaveSettings();
+        }
+
+        private void cmbFolder_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbFolder.SelectedIndex == -1)
+                return;
+
+            int idx = cmbFolder.SelectedIndex;
+
+            if (idx >= 0 && idx < mFolders.Count)
+                txtFolder.Text = mFolders.ElementAt(cmbFolder.SelectedIndex).Path;
+
+        }
+
+        private void btnSaveFolder_Click(object sender, EventArgs e)
+        {
+            string path = txtFolder.Text;
+            bool exists = mFolders.Any(f => string.Equals(f.Path, path, StringComparison.OrdinalIgnoreCase));
+            if (!exists)
+            {
+                //  Add it
+                string desc = Path.GetFileName(path);
+                mFolders.Add(new SaveFolderInfo(path, desc));
+                cmbFolder.Items.Add(desc);
+            }
+        }
+
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+            if (cmbFolder.SelectedIndex == -1)
+                return;
+
+            int idx = cmbFolder.SelectedIndex;
+
+            if (idx >= 0 && idx < mFolders.Count)
+            {
+                var result = MessageBox.Show(
+                    string.Format("Are you sure you want to delete \"{0}\"?", mFolders.ElementAt(idx).Desc),
+                    "Confirm Delete",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+                );
+
+                if (result == DialogResult.Yes)
+                {
+                    mFolders.RemoveAt(idx);
+                    cmbFolder.Items.RemoveAt(idx);
+
+                    if (cmbFolder.Items.Count > 0)
+                        cmbFolder.SelectedIndex = 0;
+                }
+                else
+                {
+                    // Cancelled
+                }
+            }
+
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            var result = MessageBox.Show(
+                    "Are you sure you want to delete all folders?",
+                    "Confirm Delete",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+                );
+
+            if (result == DialogResult.Yes)
+            {
+                mFolders.Clear();
+                cmbFolder.Items.Clear();
+            }
+            else
+            {
+                // Cancelled
             }
         }
     }

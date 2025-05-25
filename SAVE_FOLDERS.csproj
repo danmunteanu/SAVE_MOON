@@ -13,4 +13,8 @@
     <Content Include="assets\moon icon.ico" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Config.Net" Version="5.2.1" />
+  </ItemGroup>
+
 </Project>

@@ -1,4 +1,4 @@
-namespace SAVE_GAMES
+namespace SaveFolders
 {
     internal static class Program
     {
