@@ -230,6 +230,8 @@ namespace SaveFolders
                 string desc = Path.GetFileName(path);
                 mFolders.Add(new SaveFolderInfo(path, desc));
                 cmbFolder.Items.Add(desc);
+
+                cmbFolder.SelectedIndex = cmbFolder.Items.Count - 1;
             }
         }
 
