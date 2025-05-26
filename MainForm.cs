@@ -1,3 +1,4 @@
+using System.Data;
 using System.IO.Compression;
 
 namespace SaveFolders
@@ -27,16 +28,42 @@ namespace SaveFolders
 
             LoadSettings();
 
+            UpdateStatus(string.Empty);
+
             //RegisterFolders();
 
             LoadFolders();
 
+            UpdateUI();
+
             this.CenterToParent();
         }
 
-        private void LoadFolders(bool clear = true)
+        private void UpdateStatus(string status)
         {
-            if (clear)
+            lblStatus.Text = status;
+        }
+
+        private void UpdateUI()
+        {
+            int idx = cmbFolder.SelectedIndex;
+
+            bool hasFolders = cmbFolder.Items.Count > 0;
+
+            btnEdit.Enabled = idx != -1;
+
+            bool hasLeft = hasFolders && idx > 0;
+            bool hasRight = hasFolders && idx < cmbFolder.Items.Count - 1;
+
+            btnLeft.Enabled = hasLeft;
+            btnRight.Enabled = hasRight;
+        }
+
+        private void LoadFolders(bool clearFolders = true)
+        {
+            //  Loads mFolders into cmbFolders
+
+            if (clearFolders)
                 cmbFolder.Items.Clear();
 
             for (int idx = 0; idx < mFolders.Count; idx++)
@@ -84,7 +111,7 @@ namespace SaveFolders
             }
         }
 
-        private void btnSaveMoon_Click(object sender, EventArgs e)
+        private void btnArchive_Click(object sender, EventArgs e)
         {
             int idx = cmbFolder.SelectedIndex;
             if (idx == -1)
@@ -222,6 +249,11 @@ namespace SaveFolders
                 cmbFolder.Items.Add(desc);
 
                 cmbFolder.SelectedIndex = cmbFolder.Items.Count - 1;
+
+                UpdateStatus("Folder added.");
+            } else
+            {
+                UpdateStatus("Folder already exists.");
             }
         }
 
@@ -248,10 +280,13 @@ namespace SaveFolders
 
                     if (cmbFolder.Items.Count > 0)
                         cmbFolder.SelectedIndex = 0;
+
+                    UpdateStatus("Folder removed.");
+                    UpdateUI();
                 }
                 else
                 {
-                    // Cancelled
+                    UpdateStatus("Folder was not removed.");
                 }
             }
 
@@ -270,7 +305,10 @@ namespace SaveFolders
             {
                 mFolders.Clear();
                 cmbFolder.Items.Clear();
-            }            
+
+                UpdateStatus("Folders removed.");
+                UpdateUI();
+            }
         }
 
         private void btnDefaults_Click(object sender, EventArgs e)
@@ -291,6 +329,32 @@ namespace SaveFolders
                 LoadFolders();
 
             }
+        }
+
+        private void btnRight_Click(object sender, EventArgs e)
+        {
+            int idx = cmbFolder.SelectedIndex;
+            if (idx == -1)
+                return;
+
+            int count = cmbFolder.Items.Count;
+
+            if (count > 0 && idx < count - 1)
+                cmbFolder.SelectedIndex++;
+
+            UpdateUI();
+        }
+
+        private void btnLeft_Click(object sender, EventArgs e)
+        {
+            int idx = cmbFolder.SelectedIndex;
+            if (idx == -1)
+                return;
+
+            if (cmbFolder.Items.Count > 0)
+                cmbFolder.SelectedIndex--;
+
+            UpdateUI();
         }
     }
 }

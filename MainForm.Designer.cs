@@ -41,6 +41,7 @@
             btnDefaults = new Button();
             btnLeft = new Button();
             btnRight = new Button();
+            lblStatus = new Label();
             SuspendLayout();
             // 
             // btnArchive
@@ -51,7 +52,7 @@
             btnArchive.TabIndex = 0;
             btnArchive.Text = "ARCHIVE";
             btnArchive.UseVisualStyleBackColor = true;
-            btnArchive.Click += btnSaveMoon_Click;
+            btnArchive.Click += btnArchive_Click;
             // 
             // lblMoon
             // 
@@ -72,9 +73,9 @@
             // 
             // btnBrowse
             // 
-            btnBrowse.Location = new Point(690, 135);
+            btnBrowse.Location = new Point(690, 184);
             btnBrowse.Name = "btnBrowse";
-            btnBrowse.Size = new Size(123, 36);
+            btnBrowse.Size = new Size(125, 36);
             btnBrowse.TabIndex = 4;
             btnBrowse.Text = "BROWSE";
             btnBrowse.UseVisualStyleBackColor = true;
@@ -83,7 +84,7 @@
             // btnRestore
             // 
             btnRestore.Enabled = false;
-            btnRestore.Location = new Point(181, 185);
+            btnRestore.Location = new Point(690, 136);
             btnRestore.Name = "btnRestore";
             btnRestore.Size = new Size(125, 34);
             btnRestore.TabIndex = 6;
@@ -103,9 +104,9 @@
             // 
             // btnSaveFolder
             // 
-            btnSaveFolder.Location = new Point(63, 185);
+            btnSaveFolder.Location = new Point(548, 184);
             btnSaveFolder.Name = "btnSaveFolder";
-            btnSaveFolder.Size = new Size(112, 34);
+            btnSaveFolder.Size = new Size(136, 34);
             btnSaveFolder.TabIndex = 8;
             btnSaveFolder.Text = "SAVE";
             btnSaveFolder.UseVisualStyleBackColor = true;
@@ -123,7 +124,7 @@
             // 
             // btnRemove
             // 
-            btnRemove.Location = new Point(616, 59);
+            btnRemove.Location = new Point(528, 59);
             btnRemove.Name = "btnRemove";
             btnRemove.Size = new Size(65, 34);
             btnRemove.TabIndex = 10;
@@ -133,7 +134,7 @@
             // 
             // btnClear
             // 
-            btnClear.Location = new Point(687, 59);
+            btnClear.Location = new Point(690, 59);
             btnClear.Name = "btnClear";
             btnClear.Size = new Size(59, 34);
             btnClear.TabIndex = 11;
@@ -144,11 +145,11 @@
             // btnDefaults
             // 
             btnDefaults.Font = new Font("Segoe UI", 8F);
-            btnDefaults.Location = new Point(752, 61);
+            btnDefaults.Location = new Point(755, 59);
             btnDefaults.Name = "btnDefaults";
             btnDefaults.Size = new Size(50, 34);
             btnDefaults.TabIndex = 12;
-            btnDefaults.Text = "D";
+            btnDefaults.Text = "🗄️";
             btnDefaults.UseVisualStyleBackColor = true;
             btnDefaults.Click += btnDefaults_Click;
             // 
@@ -161,6 +162,7 @@
             btnLeft.TabIndex = 13;
             btnLeft.Text = "◀";
             btnLeft.UseVisualStyleBackColor = true;
+            btnLeft.Click += btnLeft_Click;
             // 
             // btnRight
             // 
@@ -171,12 +173,25 @@
             btnRight.TabIndex = 14;
             btnRight.Text = "▶";
             btnRight.UseVisualStyleBackColor = true;
+            btnRight.Click += btnRight_Click;
+            // 
+            // lblStatus
+            // 
+            lblStatus.AutoSize = true;
+            lblStatus.Font = new Font("Segoe UI", 9F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            lblStatus.ForeColor = Color.Red;
+            lblStatus.Location = new Point(63, 184);
+            lblStatus.Name = "lblStatus";
+            lblStatus.Size = new Size(71, 25);
+            lblStatus.TabIndex = 15;
+            lblStatus.Text = "STATUS";
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(847, 333);
+            ClientSize = new Size(847, 259);
+            Controls.Add(lblStatus);
             Controls.Add(btnRight);
             Controls.Add(btnLeft);
             Controls.Add(btnDefaults);
@@ -212,5 +227,6 @@
         private Button btnDefaults;
         private Button btnLeft;
         private Button btnRight;
+        private Label lblStatus;
     }
 }
