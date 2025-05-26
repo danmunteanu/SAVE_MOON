@@ -233,7 +233,10 @@ namespace SaveFolders
             int idx = cmbFolder.SelectedIndex;
 
             if (idx >= 0 && idx < mFolders.Count)
+            {
                 txtFolder.Text = mFolders.ElementAt(cmbFolder.SelectedIndex).Path;
+                UpdateUI();
+            }
 
         }
 
