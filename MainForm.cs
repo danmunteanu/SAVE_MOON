@@ -6,10 +6,6 @@ namespace SaveFolders
     {
         List<SaveFolderInfo> mFolders = new();
 
-        //private List<(string, string)> mFolders = new();
-
-        private int mSelectedFolderIndex = -1;
-
         private void RegisterFolders()
         {
             string userProfile = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
@@ -21,8 +17,8 @@ namespace SaveFolders
             string folderExperimental = @"c:\urgentdev_v2\resources\views\pages\experimental\";
             mFolders.Add(new(folderExperimental, "experimental"));
 
-            mSelectedFolderIndex = 0;
-            txtFolder.Text = mFolders[mSelectedFolderIndex].Path;
+            if (cmbFolder.Items.Count > 0)
+                txtFolder.Text = mFolders[cmbFolder.SelectedIndex].Path;
         }
 
         public MainForm()
@@ -90,8 +86,12 @@ namespace SaveFolders
 
         private void btnSaveMoon_Click(object sender, EventArgs e)
         {
-            string folder = mFolders[mSelectedFolderIndex].Path;
-            string archiveName = mFolders[mSelectedFolderIndex].Desc;
+            int idx = cmbFolder.SelectedIndex;
+            if (idx == -1)
+                return;
+
+            string folder = mFolders[idx].Path;
+            string archiveName = mFolders[idx].Desc;
 
             if (!Directory.Exists(folder))
             {
@@ -133,12 +133,6 @@ namespace SaveFolders
             }
         }
 
-        private void btnLoadMoon_Click(object sender, EventArgs e)
-        {
-            mSelectedFolderIndex = 0;
-            txtFolder.Text = mFolders[mSelectedFolderIndex].Path;
-        }
-
         private void btnBrowse_Click(object sender, EventArgs e)
         {
             using (FolderBrowserDialog folderDialog = new FolderBrowserDialog())
@@ -153,24 +147,20 @@ namespace SaveFolders
             }
         }
 
-        private void btnExperimental_Click(object sender, EventArgs e)
-        {
-            mSelectedFolderIndex = 1;
-            txtFolder.Text = mFolders[mSelectedFolderIndex].Path;
-        }
-
         private void btnRestore_Click(object sender, EventArgs e)
         {
-            string restoreToFolder = mFolders[mSelectedFolderIndex].Path;
+            int idx = cmbFolder.SelectedIndex;
+            if (idx == -1)
+                return;
+
+            string restoreToFolder = mFolders[idx].Path;
 
             // Define the restore folder (make sure this is set elsewhere or hardcoded here)
             //string restoreToFolder = @"c:\Users\Dan Beton\OneDrive\Desktop\TEMP\"; // replace with your actual folder path
 
             // Ensure the restore folder exists; create if it doesn't
             if (!Directory.Exists(restoreToFolder))
-            {
                 Directory.CreateDirectory(restoreToFolder);
-            }
 
             // Open file dialog to select a .zip file
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
