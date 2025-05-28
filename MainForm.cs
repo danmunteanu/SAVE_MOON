@@ -1,11 +1,12 @@
-using System.Data;
 using System.IO.Compression;
+using SAVE_FOLDERS;
 
 namespace SaveFolders
 {
     public partial class MainForm : Form
     {
-        List<SaveFolderInfo> mFolders = new();
+        private List<SaveFolderInfo> mFolders = new();
+        private EditorFolderName mEditorFolderName = new();
 
         private void RegisterFolders()
         {
@@ -68,7 +69,7 @@ namespace SaveFolders
 
             for (int idx = 0; idx < mFolders.Count; idx++)
             {
-                cmbFolder.Items.Add(mFolders.ElementAt(idx).Desc);
+                cmbFolder.Items.Add(mFolders.ElementAt(idx).Label);
             }
             if (cmbFolder.Items.Count > 0)
                 cmbFolder.SelectedIndex = 0;
@@ -117,7 +118,7 @@ namespace SaveFolders
                 return;
 
             string folder = mFolders[idx].Path;
-            string archiveName = mFolders[idx].Desc;
+            string archiveName = mFolders[idx].Label;
 
             if (!Directory.Exists(folder))
             {
@@ -156,7 +157,8 @@ namespace SaveFolders
                         UpdateStatus("Error archiving folder.");
                         MessageBox.Show("Error archiving folder: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                } else
+                }
+                else
                 {
                     UpdateStatus("Archiving cancelled.");
                 }
@@ -174,7 +176,8 @@ namespace SaveFolders
                 {
                     txtFolder.Text = folderDialog.SelectedPath;
                     UpdateStatus("Folder selected.");
-                } else
+                }
+                else
                 {
                     UpdateStatus("Browse cancelled.");
                 }
@@ -278,7 +281,7 @@ namespace SaveFolders
             if (idx >= 0 && idx < mFolders.Count)
             {
                 var result = MessageBox.Show(
-                    string.Format("Are you sure you want to delete \"{0}\"?", mFolders.ElementAt(idx).Desc),
+                    string.Format("Are you sure you want to delete \"{0}\"?", mFolders.ElementAt(idx).Label),
                     "Confirm Delete",
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Question
@@ -306,8 +309,8 @@ namespace SaveFolders
         private void btnClear_Click(object sender, EventArgs e)
         {
             var result = MessageBox.Show(
-                    "Are you sure you want to delete all folders?",
-                    "Confirm Delete",
+                    "Are you sure you want to clear all folders?",
+                    "Confirm Clear",
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Question
                 );
@@ -319,7 +322,8 @@ namespace SaveFolders
 
                 UpdateStatus("Folders cleared.");
                 UpdateUI();
-            } else
+            }
+            else
             {
                 UpdateStatus("Folders not cleared.");
             }
@@ -344,7 +348,8 @@ namespace SaveFolders
 
                 UpdateStatus("Loaded default folders");
                 UpdateUI();
-            } else
+            }
+            else
             {
                 UpdateStatus("Default folders not loaded.");
             }
@@ -379,6 +384,22 @@ namespace SaveFolders
         private void MainForm_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            int idx = cmbFolder.SelectedIndex;
+            if (idx == -1) return;
+
+            if (!(idx >= 0 && idx < mFolders.Count))
+                return;
+
+            mEditorFolderName.FolderName = mFolders.ElementAt(idx).Label;
+            if (mEditorFolderName.ShowDialog() == DialogResult.OK)
+            {
+                mFolders.ElementAt(idx).Label = mEditorFolderName.InputValue;
+                cmbFolder.Items[idx] = mEditorFolderName.InputValue;
+            }
         }
     }
 }

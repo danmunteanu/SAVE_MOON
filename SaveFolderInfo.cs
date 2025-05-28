@@ -2,13 +2,13 @@
 {
     public class SaveFolderInfo
     {
-        public string Desc { get; set; } = string.Empty;
+        public string Label { get; set; } = string.Empty;
         public string Path { get; set; } = string.Empty;
 
-        public SaveFolderInfo(string path, string desc)
+        public SaveFolderInfo(string path, string label)
         {
             Path = path;
-            Desc = desc;
+            Label = label;
         }
     }
 }

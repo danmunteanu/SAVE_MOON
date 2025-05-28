@@ -137,6 +137,7 @@
             btnEdit.TabIndex = 9;
             btnEdit.Text = "✏️";
             btnEdit.UseVisualStyleBackColor = true;
+            btnEdit.Click += btnEdit_Click;
             // 
             // btnRemove
             // 
