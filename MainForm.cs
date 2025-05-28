@@ -254,7 +254,8 @@ namespace SaveFolders
                 cmbFolder.SelectedIndex = cmbFolder.Items.Count - 1;
 
                 UpdateStatus("Folder added.");
-            } else
+            }
+            else
             {
                 UpdateStatus("Folder already exists.");
             }
@@ -358,6 +359,11 @@ namespace SaveFolders
                 cmbFolder.SelectedIndex--;
 
             UpdateUI();
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

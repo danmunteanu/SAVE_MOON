@@ -42,13 +42,22 @@
             btnLeft = new Button();
             btnRight = new Button();
             lblStatus = new Label();
+            tableLayoutPanelFolder = new TableLayoutPanel();
+            tableLayoutPanelButtons1 = new TableLayoutPanel();
+            tableLayoutPanel1 = new TableLayoutPanel();
+            tableLayoutPanelAll = new TableLayoutPanel();
+            tableLayoutPanelFolder.SuspendLayout();
+            tableLayoutPanelButtons1.SuspendLayout();
+            tableLayoutPanel1.SuspendLayout();
+            tableLayoutPanelAll.SuspendLayout();
             SuspendLayout();
             // 
             // btnArchive
             // 
-            btnArchive.Location = new Point(548, 135);
+            btnArchive.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            btnArchive.Location = new Point(466, 3);
             btnArchive.Name = "btnArchive";
-            btnArchive.Size = new Size(133, 36);
+            btnArchive.Size = new Size(134, 33);
             btnArchive.TabIndex = 0;
             btnArchive.Text = "ARCHIVE";
             btnArchive.UseVisualStyleBackColor = true;
@@ -56,26 +65,29 @@
             // 
             // lblMoon
             // 
+            lblMoon.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             lblMoon.AutoSize = true;
-            lblMoon.Location = new Point(33, 64);
+            lblMoon.Location = new Point(3, 7);
             lblMoon.Name = "lblMoon";
-            lblMoon.Size = new Size(117, 25);
+            lblMoon.Size = new Size(129, 25);
             lblMoon.TabIndex = 1;
             lblMoon.Text = "Select Folder:";
             // 
             // txtFolder
             // 
-            txtFolder.Location = new Point(63, 138);
+            txtFolder.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            txtFolder.Location = new Point(3, 4);
             txtFolder.Name = "txtFolder";
             txtFolder.ReadOnly = true;
-            txtFolder.Size = new Size(459, 31);
+            txtFolder.Size = new Size(457, 31);
             txtFolder.TabIndex = 2;
             // 
             // btnBrowse
             // 
-            btnBrowse.Location = new Point(690, 184);
+            btnBrowse.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            btnBrowse.Location = new Point(606, 3);
             btnBrowse.Name = "btnBrowse";
-            btnBrowse.Size = new Size(125, 36);
+            btnBrowse.Size = new Size(134, 32);
             btnBrowse.TabIndex = 4;
             btnBrowse.Text = "BROWSE";
             btnBrowse.UseVisualStyleBackColor = true;
@@ -83,10 +95,11 @@
             // 
             // btnRestore
             // 
+            btnRestore.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             btnRestore.Enabled = false;
-            btnRestore.Location = new Point(690, 136);
+            btnRestore.Location = new Point(606, 3);
             btnRestore.Name = "btnRestore";
-            btnRestore.Size = new Size(125, 34);
+            btnRestore.Size = new Size(134, 33);
             btnRestore.TabIndex = 6;
             btnRestore.Text = "RESTORE";
             btnRestore.UseVisualStyleBackColor = true;
@@ -94,19 +107,21 @@
             // 
             // cmbFolder
             // 
+            cmbFolder.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             cmbFolder.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbFolder.FormattingEnabled = true;
-            cmbFolder.Location = new Point(156, 61);
+            cmbFolder.Location = new Point(138, 3);
             cmbFolder.Name = "cmbFolder";
-            cmbFolder.Size = new Size(195, 33);
+            cmbFolder.Size = new Size(184, 33);
             cmbFolder.TabIndex = 7;
             cmbFolder.SelectedIndexChanged += cmbFolder_SelectedIndexChanged;
             // 
             // btnSaveFolder
             // 
-            btnSaveFolder.Location = new Point(548, 184);
+            btnSaveFolder.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            btnSaveFolder.Location = new Point(466, 3);
             btnSaveFolder.Name = "btnSaveFolder";
-            btnSaveFolder.Size = new Size(136, 34);
+            btnSaveFolder.Size = new Size(134, 32);
             btnSaveFolder.TabIndex = 8;
             btnSaveFolder.Text = "SAVE";
             btnSaveFolder.UseVisualStyleBackColor = true;
@@ -114,19 +129,21 @@
             // 
             // btnEdit
             // 
+            btnEdit.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             btnEdit.Enabled = false;
-            btnEdit.Location = new Point(357, 60);
+            btnEdit.Location = new Point(328, 3);
             btnEdit.Name = "btnEdit";
-            btnEdit.Size = new Size(54, 34);
+            btnEdit.Size = new Size(39, 33);
             btnEdit.TabIndex = 9;
             btnEdit.Text = "✏️";
             btnEdit.UseVisualStyleBackColor = true;
             // 
             // btnRemove
             // 
-            btnRemove.Location = new Point(528, 59);
+            btnRemove.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            btnRemove.Location = new Point(463, 3);
             btnRemove.Name = "btnRemove";
-            btnRemove.Size = new Size(65, 34);
+            btnRemove.Size = new Size(39, 33);
             btnRemove.TabIndex = 10;
             btnRemove.Text = "🗑️";
             btnRemove.UseVisualStyleBackColor = true;
@@ -134,9 +151,10 @@
             // 
             // btnClear
             // 
-            btnClear.Location = new Point(690, 59);
+            btnClear.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            btnClear.Location = new Point(701, 4);
             btnClear.Name = "btnClear";
-            btnClear.Size = new Size(59, 34);
+            btnClear.Size = new Size(39, 30);
             btnClear.TabIndex = 11;
             btnClear.Text = "❌";
             btnClear.UseVisualStyleBackColor = true;
@@ -144,10 +162,11 @@
             // 
             // btnDefaults
             // 
+            btnDefaults.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             btnDefaults.Font = new Font("Segoe UI", 8F);
-            btnDefaults.Location = new Point(755, 59);
+            btnDefaults.Location = new Point(656, 3);
             btnDefaults.Name = "btnDefaults";
-            btnDefaults.Size = new Size(50, 34);
+            btnDefaults.Size = new Size(39, 33);
             btnDefaults.TabIndex = 12;
             btnDefaults.Text = "🗄️";
             btnDefaults.UseVisualStyleBackColor = true;
@@ -155,10 +174,11 @@
             // 
             // btnLeft
             // 
+            btnLeft.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             btnLeft.Enabled = false;
-            btnLeft.Location = new Point(422, 60);
+            btnLeft.Location = new Point(373, 3);
             btnLeft.Name = "btnLeft";
-            btnLeft.Size = new Size(47, 34);
+            btnLeft.Size = new Size(39, 33);
             btnLeft.TabIndex = 13;
             btnLeft.Text = "◀";
             btnLeft.UseVisualStyleBackColor = true;
@@ -166,10 +186,11 @@
             // 
             // btnRight
             // 
+            btnRight.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             btnRight.Enabled = false;
-            btnRight.Location = new Point(475, 60);
+            btnRight.Location = new Point(418, 3);
             btnRight.Name = "btnRight";
-            btnRight.Size = new Size(47, 34);
+            btnRight.Size = new Size(39, 33);
             btnRight.TabIndex = 14;
             btnRight.Text = "▶";
             btnRight.UseVisualStyleBackColor = true;
@@ -177,39 +198,118 @@
             // 
             // lblStatus
             // 
+            lblStatus.Anchor = AnchorStyles.Left;
             lblStatus.AutoSize = true;
             lblStatus.Font = new Font("Segoe UI", 9F, FontStyle.Italic, GraphicsUnit.Point, 0);
             lblStatus.ForeColor = Color.Red;
-            lblStatus.Location = new Point(63, 184);
+            lblStatus.Location = new Point(3, 6);
             lblStatus.Name = "lblStatus";
             lblStatus.Size = new Size(71, 25);
             lblStatus.TabIndex = 15;
             lblStatus.Text = "STATUS";
             // 
+            // tableLayoutPanelFolder
+            // 
+            tableLayoutPanelFolder.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            tableLayoutPanelFolder.ColumnCount = 9;
+            tableLayoutPanelFolder.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 135F));
+            tableLayoutPanelFolder.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 190F));
+            tableLayoutPanelFolder.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 45F));
+            tableLayoutPanelFolder.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 45F));
+            tableLayoutPanelFolder.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 45F));
+            tableLayoutPanelFolder.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 45F));
+            tableLayoutPanelFolder.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanelFolder.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 45F));
+            tableLayoutPanelFolder.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 45F));
+            tableLayoutPanelFolder.Controls.Add(lblMoon, 0, 0);
+            tableLayoutPanelFolder.Controls.Add(cmbFolder, 1, 0);
+            tableLayoutPanelFolder.Controls.Add(btnClear, 8, 0);
+            tableLayoutPanelFolder.Controls.Add(btnRight, 4, 0);
+            tableLayoutPanelFolder.Controls.Add(btnEdit, 2, 0);
+            tableLayoutPanelFolder.Controls.Add(btnRemove, 5, 0);
+            tableLayoutPanelFolder.Controls.Add(btnLeft, 3, 0);
+            tableLayoutPanelFolder.Controls.Add(btnDefaults, 7, 0);
+            tableLayoutPanelFolder.Location = new Point(48, 40);
+            tableLayoutPanelFolder.Name = "tableLayoutPanelFolder";
+            tableLayoutPanelFolder.RowCount = 1;
+            tableLayoutPanelFolder.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanelFolder.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tableLayoutPanelFolder.Size = new Size(743, 39);
+            tableLayoutPanelFolder.TabIndex = 16;
+            // 
+            // tableLayoutPanelButtons1
+            // 
+            tableLayoutPanelButtons1.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            tableLayoutPanelButtons1.ColumnCount = 3;
+            tableLayoutPanelButtons1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanelButtons1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 140F));
+            tableLayoutPanelButtons1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 140F));
+            tableLayoutPanelButtons1.Controls.Add(btnArchive, 1, 0);
+            tableLayoutPanelButtons1.Controls.Add(btnRestore, 2, 0);
+            tableLayoutPanelButtons1.Controls.Add(txtFolder, 0, 0);
+            tableLayoutPanelButtons1.Location = new Point(48, 85);
+            tableLayoutPanelButtons1.Name = "tableLayoutPanelButtons1";
+            tableLayoutPanelButtons1.RowCount = 1;
+            tableLayoutPanelButtons1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanelButtons1.Size = new Size(743, 39);
+            tableLayoutPanelButtons1.TabIndex = 17;
+            // 
+            // tableLayoutPanel1
+            // 
+            tableLayoutPanel1.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            tableLayoutPanel1.ColumnCount = 3;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 140F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 140F));
+            tableLayoutPanel1.Controls.Add(btnSaveFolder, 1, 0);
+            tableLayoutPanel1.Controls.Add(btnBrowse, 2, 0);
+            tableLayoutPanel1.Controls.Add(lblStatus, 0, 0);
+            tableLayoutPanel1.Location = new Point(48, 130);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.RowCount = 1;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel1.Size = new Size(743, 38);
+            tableLayoutPanel1.TabIndex = 18;
+            // 
+            // tableLayoutPanelAll
+            // 
+            tableLayoutPanelAll.ColumnCount = 3;
+            tableLayoutPanelAll.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 45F));
+            tableLayoutPanelAll.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanelAll.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 45F));
+            tableLayoutPanelAll.Controls.Add(tableLayoutPanel1, 1, 3);
+            tableLayoutPanelAll.Controls.Add(tableLayoutPanelButtons1, 1, 2);
+            tableLayoutPanelAll.Controls.Add(tableLayoutPanelFolder, 1, 1);
+            tableLayoutPanelAll.Dock = DockStyle.Fill;
+            tableLayoutPanelAll.Location = new Point(0, 0);
+            tableLayoutPanelAll.Name = "tableLayoutPanelAll";
+            tableLayoutPanelAll.RowCount = 5;
+            tableLayoutPanelAll.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanelAll.RowStyles.Add(new RowStyle(SizeType.Absolute, 45F));
+            tableLayoutPanelAll.RowStyles.Add(new RowStyle(SizeType.Absolute, 45F));
+            tableLayoutPanelAll.RowStyles.Add(new RowStyle(SizeType.Absolute, 45F));
+            tableLayoutPanelAll.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanelAll.Size = new Size(839, 209);
+            tableLayoutPanelAll.TabIndex = 19;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(847, 259);
-            Controls.Add(lblStatus);
-            Controls.Add(btnRight);
-            Controls.Add(btnLeft);
-            Controls.Add(btnDefaults);
-            Controls.Add(btnClear);
-            Controls.Add(btnRemove);
-            Controls.Add(btnEdit);
-            Controls.Add(btnSaveFolder);
-            Controls.Add(cmbFolder);
-            Controls.Add(btnRestore);
-            Controls.Add(btnBrowse);
-            Controls.Add(txtFolder);
-            Controls.Add(lblMoon);
-            Controls.Add(btnArchive);
+            ClientSize = new Size(839, 209);
+            Controls.Add(tableLayoutPanelAll);
             Name = "MainForm";
             Text = "SAVE Moon";
             FormClosed += MainForm_FormClosed;
+            Load += MainForm_Load;
+            tableLayoutPanelFolder.ResumeLayout(false);
+            tableLayoutPanelFolder.PerformLayout();
+            tableLayoutPanelButtons1.ResumeLayout(false);
+            tableLayoutPanelButtons1.PerformLayout();
+            tableLayoutPanel1.ResumeLayout(false);
+            tableLayoutPanel1.PerformLayout();
+            tableLayoutPanelAll.ResumeLayout(false);
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -228,5 +328,9 @@
         private Button btnLeft;
         private Button btnRight;
         private Label lblStatus;
+        private TableLayoutPanel tableLayoutPanelFolder;
+        private TableLayoutPanel tableLayoutPanelButtons1;
+        private TableLayoutPanel tableLayoutPanel1;
+        private TableLayoutPanel tableLayoutPanelAll;
     }
 }
