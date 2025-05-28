@@ -84,7 +84,6 @@ namespace SaveFolders
             mFolders = SettingsManager.LoadFolderList();
         }
 
-
         private static void DirectoryCopy(string sourceDirName, string destDirName, bool copySubDirs)
         {
             DirectoryInfo dir = new DirectoryInfo(sourceDirName);
@@ -150,12 +149,16 @@ namespace SaveFolders
                         Directory.Delete(tempRoot, true);
 
                         btnArchive.Enabled = true;
-                        MessageBox.Show("Archive saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        UpdateStatus("Archive saved successfully");
                     }
                     catch (Exception ex)
                     {
+                        UpdateStatus("Error archiving folder.");
                         MessageBox.Show("Error archiving folder: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
+                } else
+                {
+                    UpdateStatus("Archiving cancelled.");
                 }
             }
         }
@@ -170,6 +173,10 @@ namespace SaveFolders
                 if (folderDialog.ShowDialog() == DialogResult.OK)
                 {
                     txtFolder.Text = folderDialog.SelectedPath;
+                    UpdateStatus("Folder selected.");
+                } else
+                {
+                    UpdateStatus("Browse cancelled.");
                 }
             }
         }
@@ -310,8 +317,11 @@ namespace SaveFolders
                 mFolders.Clear();
                 cmbFolder.Items.Clear();
 
-                UpdateStatus("Folders removed.");
+                UpdateStatus("Folders cleared.");
                 UpdateUI();
+            } else
+            {
+                UpdateStatus("Folders not cleared.");
             }
         }
 
@@ -332,6 +342,11 @@ namespace SaveFolders
                 RegisterFolders();
                 LoadFolders();
 
+                UpdateStatus("Loaded default folders");
+                UpdateUI();
+            } else
+            {
+                UpdateStatus("Default folders not loaded.");
             }
         }
 
