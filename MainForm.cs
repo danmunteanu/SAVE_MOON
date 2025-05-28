@@ -27,13 +27,22 @@ namespace SaveFolders
         {
             InitializeComponent();
 
-            LoadSettings();
+            //  Load from settings
+            mFolders = SettingsManager.LoadFolderList();
 
+            //  Clear status
             UpdateStatus(string.Empty);
 
+            //  Load default folders
             //RegisterFolders();
 
+            //  mFolders -> cmbFolders
             LoadFolders();
+
+            //  Set last selected index
+            int selIndex = SettingsManager.Settings.SelectedFolderIndex;
+            if (selIndex != -1 && selIndex >= 0 && selIndex < cmbFolder.Items.Count)
+                cmbFolder.SelectedIndex = selIndex;
 
             UpdateUI();
 
@@ -78,11 +87,7 @@ namespace SaveFolders
         private void SaveSettings()
         {
             SettingsManager.SaveFolderList(mFolders);
-        }
-
-        private void LoadSettings()
-        {
-            mFolders = SettingsManager.LoadFolderList();
+            SettingsManager.Settings.SelectedFolderIndex = cmbFolder.SelectedIndex;
         }
 
         private static void DirectoryCopy(string sourceDirName, string destDirName, bool copySubDirs)
