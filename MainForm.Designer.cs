@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             btnArchive = new Button();
             lblMoon = new Label();
             txtFolder = new TextBox();
@@ -299,8 +300,9 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(839, 209);
             Controls.Add(tableLayoutPanelAll);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "MainForm";
-            Text = "SAVE Moon";
+            Text = "Save Moon Folders";
             FormClosed += MainForm_FormClosed;
             Load += MainForm_Load;
             tableLayoutPanelFolder.ResumeLayout(false);
