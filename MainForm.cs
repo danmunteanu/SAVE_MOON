@@ -237,7 +237,8 @@ namespace SaveFolders
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            SaveSettings();
+            if (chkSaveSettings.Checked)
+                SaveSettings();
         }
 
         private void cmbFolder_SelectedIndexChanged(object sender, EventArgs e)
