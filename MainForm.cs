@@ -8,14 +8,20 @@ namespace SaveFolders
         private List<SaveFolderInfo> mFolders = new();
         private EditorFolderName mEditorFolderName = new();
 
+        /*
+         * Registers default folders for the application.
+         * You might want to adjust this to your needs
+         */
         private void RegisterFolders()
         {
             string userProfile = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
             string localLowPath = Path.Combine(userProfile, "AppData", "LocalLow");
             string folderMoon = Path.Combine(localLowPath, "Moon Studios");
 
+            //  Moon Studios folder
             mFolders.Add(new(folderMoon, "MoonStudios"));
 
+            //  Experimental folder (for urgentdev_v2)
             string folderExperimental = @"c:\urgentdev_v2\resources\views\pages\experimental\";
             mFolders.Add(new(folderExperimental, "experimental"));
 
@@ -27,7 +33,7 @@ namespace SaveFolders
         {
             InitializeComponent();
 
-            //  Load from settings
+            //  Load folders from settings
             mFolders = SettingsManager.LoadFolderList();
 
             //  Clear status
@@ -253,7 +259,6 @@ namespace SaveFolders
                 txtFolder.Text = mFolders.ElementAt(cmbFolder.SelectedIndex).Path;
                 UpdateUI();
             }
-
         }
 
         private void btnSaveFolder_Click(object sender, EventArgs e)
