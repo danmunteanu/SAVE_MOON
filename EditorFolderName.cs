@@ -1,10 +1,13 @@
-﻿namespace SAVE_FOLDERS
+﻿using System.ComponentModel;
+
+namespace SAVE_FOLDERS
 {
     public partial class EditorFolderName : Form
     {
         private TextBox txtFolderName;
         public string InputValue { get; private set; } = string.Empty;
-
+        
+        [DefaultValue("")]
         public string FolderName
         {
             get => txtFolderName.Text;
