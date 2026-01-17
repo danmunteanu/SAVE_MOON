@@ -18,16 +18,25 @@ namespace SaveFolders
             string localLowPath = Path.Combine(userProfile, "AppData", "LocalLow");
             string folderMoon = Path.Combine(localLowPath, "Moon Studios");
 
-            //  Moon Studios folder
-            mFolders.Add(new(folderMoon, "MoonStudios"));
+            // Moon Studios folder
+            if (!mFolders.Any(f =>
+                string.Equals(f.Path, folderMoon, StringComparison.OrdinalIgnoreCase)))
+            {
+                mFolders.Add(new(folderMoon, "MoonStudios"));
+            }
 
-            //  Experimental folder (for urgentdev_v2)
-            string folderExperimental = @"c:\urgentdev_v2\resources\views\pages\experimental\";
-            mFolders.Add(new(folderExperimental, "experimental"));
+            // Experimental folder (for urgentdev_v2)
+            //string folderExperimental = @"c:\urgentdev_v2\resources\views\pages\experimental\";
+            //if (!mFolders.Any(f =>
+            //    string.Equals(f.Path, folderExperimental, StringComparison.OrdinalIgnoreCase)))
+            //{
+            //    mFolders.Add(new(folderExperimental, "experimental"));
+            //}
 
             if (cmbFolder.Items.Count > 0)
                 txtFolder.Text = mFolders[cmbFolder.SelectedIndex].Path;
         }
+
 
         public MainForm()
         {
@@ -40,7 +49,7 @@ namespace SaveFolders
             UpdateStatus(string.Empty);
 
             //  Load default folders
-            //RegisterFolders();
+            RegisterFolders();
 
             //  mFolders -> cmbFolders
             LoadFolders();
