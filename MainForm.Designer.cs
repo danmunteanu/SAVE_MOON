@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             btnArchive = new Button();
-            lblMoon = new Label();
+            lblSelect = new Label();
             txtFolder = new TextBox();
             btnBrowse = new Button();
             btnRestore = new Button();
@@ -59,43 +59,43 @@
             // btnArchive
             // 
             btnArchive.Dock = DockStyle.Fill;
-            btnArchive.Location = new Point(388, 2);
+            btnArchive.Location = new Point(338, 2);
             btnArchive.Margin = new Padding(2);
             btnArchive.Name = "btnArchive";
-            btnArchive.Size = new Size(108, 27);
+            btnArchive.Size = new Size(94, 27);
             btnArchive.TabIndex = 0;
             btnArchive.Text = "ARCHIVE";
             btnArchive.UseVisualStyleBackColor = true;
             btnArchive.Click += btnArchive_Click;
             // 
-            // lblMoon
+            // lblSelect
             // 
-            lblMoon.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            lblMoon.AutoSize = true;
-            lblMoon.Location = new Point(2, 5);
-            lblMoon.Margin = new Padding(2, 0, 2, 0);
-            lblMoon.Name = "lblMoon";
-            lblMoon.Size = new Size(104, 20);
-            lblMoon.TabIndex = 1;
-            lblMoon.Text = "Select Folder:";
+            lblSelect.Anchor = AnchorStyles.Left;
+            lblSelect.AutoSize = true;
+            lblSelect.Location = new Point(2, 8);
+            lblSelect.Margin = new Padding(2, 0, 2, 0);
+            lblSelect.Name = "lblSelect";
+            lblSelect.Size = new Size(77, 15);
+            lblSelect.TabIndex = 1;
+            lblSelect.Text = "Select Folder:";
             // 
             // txtFolder
             // 
             txtFolder.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            txtFolder.Location = new Point(2, 2);
+            txtFolder.Location = new Point(2, 4);
             txtFolder.Margin = new Padding(2);
             txtFolder.Name = "txtFolder";
             txtFolder.ReadOnly = true;
-            txtFolder.Size = new Size(382, 27);
+            txtFolder.Size = new Size(332, 23);
             txtFolder.TabIndex = 2;
             // 
             // btnBrowse
             // 
             btnBrowse.Dock = DockStyle.Fill;
-            btnBrowse.Location = new Point(500, 2);
+            btnBrowse.Location = new Point(436, 2);
             btnBrowse.Margin = new Padding(2);
             btnBrowse.Name = "btnBrowse";
-            btnBrowse.Size = new Size(108, 26);
+            btnBrowse.Size = new Size(94, 27);
             btnBrowse.TabIndex = 4;
             btnBrowse.Text = "BROWSE";
             btnBrowse.UseVisualStyleBackColor = true;
@@ -105,10 +105,10 @@
             // 
             btnRestore.Dock = DockStyle.Fill;
             btnRestore.Enabled = false;
-            btnRestore.Location = new Point(500, 2);
+            btnRestore.Location = new Point(436, 2);
             btnRestore.Margin = new Padding(2);
             btnRestore.Name = "btnRestore";
-            btnRestore.Size = new Size(108, 27);
+            btnRestore.Size = new Size(94, 27);
             btnRestore.TabIndex = 6;
             btnRestore.Text = "RESTORE";
             btnRestore.UseVisualStyleBackColor = true;
@@ -119,20 +119,20 @@
             cmbFolder.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             cmbFolder.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbFolder.FormattingEnabled = true;
-            cmbFolder.Location = new Point(110, 2);
+            cmbFolder.Location = new Point(97, 4);
             cmbFolder.Margin = new Padding(2);
             cmbFolder.Name = "cmbFolder";
-            cmbFolder.Size = new Size(148, 28);
+            cmbFolder.Size = new Size(146, 23);
             cmbFolder.TabIndex = 7;
             cmbFolder.SelectedIndexChanged += cmbFolder_SelectedIndexChanged;
             // 
             // btnSaveFolder
             // 
             btnSaveFolder.Dock = DockStyle.Fill;
-            btnSaveFolder.Location = new Point(388, 2);
+            btnSaveFolder.Location = new Point(338, 2);
             btnSaveFolder.Margin = new Padding(2);
             btnSaveFolder.Name = "btnSaveFolder";
-            btnSaveFolder.Size = new Size(108, 26);
+            btnSaveFolder.Size = new Size(94, 27);
             btnSaveFolder.TabIndex = 8;
             btnSaveFolder.Text = "SAVE";
             btnSaveFolder.UseVisualStyleBackColor = true;
@@ -140,12 +140,12 @@
             // 
             // btnEdit
             // 
-            btnEdit.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            btnEdit.Dock = DockStyle.Fill;
             btnEdit.Enabled = false;
-            btnEdit.Location = new Point(262, 2);
+            btnEdit.Location = new Point(247, 2);
             btnEdit.Margin = new Padding(2);
             btnEdit.Name = "btnEdit";
-            btnEdit.Size = new Size(32, 26);
+            btnEdit.Size = new Size(29, 27);
             btnEdit.TabIndex = 9;
             btnEdit.Text = "✏️";
             btnEdit.UseVisualStyleBackColor = true;
@@ -153,11 +153,11 @@
             // 
             // btnRemove
             // 
-            btnRemove.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            btnRemove.Location = new Point(370, 2);
+            btnRemove.Dock = DockStyle.Fill;
+            btnRemove.Location = new Point(344, 2);
             btnRemove.Margin = new Padding(2);
             btnRemove.Name = "btnRemove";
-            btnRemove.Size = new Size(32, 26);
+            btnRemove.Size = new Size(28, 27);
             btnRemove.TabIndex = 10;
             btnRemove.Text = "🗑️";
             btnRemove.UseVisualStyleBackColor = true;
@@ -165,11 +165,11 @@
             // 
             // btnClear
             // 
-            btnClear.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            btnClear.Location = new Point(576, 3);
+            btnClear.Dock = DockStyle.Fill;
+            btnClear.Location = new Point(502, 2);
             btnClear.Margin = new Padding(2);
             btnClear.Name = "btnClear";
-            btnClear.Size = new Size(32, 24);
+            btnClear.Size = new Size(28, 27);
             btnClear.TabIndex = 11;
             btnClear.Text = "❌";
             btnClear.UseVisualStyleBackColor = true;
@@ -177,12 +177,12 @@
             // 
             // btnDefaults
             // 
-            btnDefaults.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            btnDefaults.Dock = DockStyle.Fill;
             btnDefaults.Font = new Font("Segoe UI", 8F);
-            btnDefaults.Location = new Point(540, 2);
+            btnDefaults.Location = new Point(470, 2);
             btnDefaults.Margin = new Padding(2);
             btnDefaults.Name = "btnDefaults";
-            btnDefaults.Size = new Size(32, 26);
+            btnDefaults.Size = new Size(28, 27);
             btnDefaults.TabIndex = 12;
             btnDefaults.Text = "🗄️";
             btnDefaults.UseVisualStyleBackColor = true;
@@ -190,12 +190,12 @@
             // 
             // btnLeft
             // 
-            btnLeft.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            btnLeft.Dock = DockStyle.Fill;
             btnLeft.Enabled = false;
-            btnLeft.Location = new Point(298, 2);
+            btnLeft.Location = new Point(280, 2);
             btnLeft.Margin = new Padding(2);
             btnLeft.Name = "btnLeft";
-            btnLeft.Size = new Size(32, 26);
+            btnLeft.Size = new Size(28, 27);
             btnLeft.TabIndex = 13;
             btnLeft.Text = "◀";
             btnLeft.UseVisualStyleBackColor = true;
@@ -203,12 +203,12 @@
             // 
             // btnRight
             // 
-            btnRight.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            btnRight.Dock = DockStyle.Fill;
             btnRight.Enabled = false;
-            btnRight.Location = new Point(334, 2);
+            btnRight.Location = new Point(312, 2);
             btnRight.Margin = new Padding(2);
             btnRight.Name = "btnRight";
-            btnRight.Size = new Size(32, 26);
+            btnRight.Size = new Size(28, 27);
             btnRight.TabIndex = 14;
             btnRight.Text = "▶";
             btnRight.UseVisualStyleBackColor = true;
@@ -220,27 +220,26 @@
             lblStatus.AutoSize = true;
             lblStatus.Font = new Font("Segoe UI", 9F, FontStyle.Italic, GraphicsUnit.Point, 0);
             lblStatus.ForeColor = Color.Red;
-            lblStatus.Location = new Point(2, 3);
+            lblStatus.Location = new Point(2, 6);
             lblStatus.Margin = new Padding(2, 0, 2, 0);
             lblStatus.Name = "lblStatus";
-            lblStatus.Size = new Size(58, 20);
+            lblStatus.Size = new Size(47, 15);
             lblStatus.TabIndex = 15;
             lblStatus.Text = "STATUS";
             // 
             // tableLayoutPanelFolder
             // 
-            tableLayoutPanelFolder.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             tableLayoutPanelFolder.ColumnCount = 9;
-            tableLayoutPanelFolder.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 108F));
-            tableLayoutPanelFolder.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 152F));
-            tableLayoutPanelFolder.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 36F));
-            tableLayoutPanelFolder.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 36F));
-            tableLayoutPanelFolder.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 36F));
-            tableLayoutPanelFolder.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 36F));
+            tableLayoutPanelFolder.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 95F));
+            tableLayoutPanelFolder.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 150F));
+            tableLayoutPanelFolder.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 33F));
+            tableLayoutPanelFolder.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 32F));
+            tableLayoutPanelFolder.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 32F));
+            tableLayoutPanelFolder.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 32F));
             tableLayoutPanelFolder.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanelFolder.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 36F));
-            tableLayoutPanelFolder.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 36F));
-            tableLayoutPanelFolder.Controls.Add(lblMoon, 0, 0);
+            tableLayoutPanelFolder.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 32F));
+            tableLayoutPanelFolder.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 32F));
+            tableLayoutPanelFolder.Controls.Add(lblSelect, 0, 0);
             tableLayoutPanelFolder.Controls.Add(cmbFolder, 1, 0);
             tableLayoutPanelFolder.Controls.Add(btnClear, 8, 0);
             tableLayoutPanelFolder.Controls.Add(btnRight, 4, 0);
@@ -248,13 +247,13 @@
             tableLayoutPanelFolder.Controls.Add(btnRemove, 5, 0);
             tableLayoutPanelFolder.Controls.Add(btnLeft, 3, 0);
             tableLayoutPanelFolder.Controls.Add(btnDefaults, 7, 0);
-            tableLayoutPanelFolder.Location = new Point(38, 42);
+            tableLayoutPanelFolder.Dock = DockStyle.Fill;
+            tableLayoutPanelFolder.Location = new Point(34, 25);
             tableLayoutPanelFolder.Margin = new Padding(2);
             tableLayoutPanelFolder.Name = "tableLayoutPanelFolder";
             tableLayoutPanelFolder.RowCount = 1;
             tableLayoutPanelFolder.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanelFolder.RowStyles.Add(new RowStyle(SizeType.Absolute, 31F));
-            tableLayoutPanelFolder.Size = new Size(610, 31);
+            tableLayoutPanelFolder.Size = new Size(532, 31);
             tableLayoutPanelFolder.TabIndex = 16;
             // 
             // chkSaveSettings
@@ -263,10 +262,10 @@
             chkSaveSettings.AutoSize = true;
             chkSaveSettings.Checked = true;
             chkSaveSettings.CheckState = CheckState.Checked;
-            chkSaveSettings.Location = new Point(241, 2);
+            chkSaveSettings.Location = new Point(228, 4);
             chkSaveSettings.Margin = new Padding(2);
             chkSaveSettings.Name = "chkSaveSettings";
-            chkSaveSettings.Size = new Size(139, 22);
+            chkSaveSettings.Size = new Size(102, 19);
             chkSaveSettings.TabIndex = 19;
             chkSaveSettings.Text = "Save Settings";
             chkSaveSettings.TextAlign = ContentAlignment.MiddleCenter;
@@ -274,45 +273,45 @@
             // 
             // tableLayoutPanelButtons1
             // 
-            tableLayoutPanelButtons1.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             tableLayoutPanelButtons1.ColumnCount = 3;
             tableLayoutPanelButtons1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanelButtons1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 112F));
-            tableLayoutPanelButtons1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 112F));
+            tableLayoutPanelButtons1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 98F));
+            tableLayoutPanelButtons1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 98F));
             tableLayoutPanelButtons1.Controls.Add(btnArchive, 1, 0);
             tableLayoutPanelButtons1.Controls.Add(btnRestore, 2, 0);
             tableLayoutPanelButtons1.Controls.Add(txtFolder, 0, 0);
-            tableLayoutPanelButtons1.Location = new Point(38, 80);
+            tableLayoutPanelButtons1.Dock = DockStyle.Fill;
+            tableLayoutPanelButtons1.Location = new Point(34, 70);
             tableLayoutPanelButtons1.Margin = new Padding(2);
             tableLayoutPanelButtons1.Name = "tableLayoutPanelButtons1";
             tableLayoutPanelButtons1.RowCount = 1;
             tableLayoutPanelButtons1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanelButtons1.Size = new Size(610, 31);
+            tableLayoutPanelButtons1.Size = new Size(532, 31);
             tableLayoutPanelButtons1.TabIndex = 17;
             // 
             // tableLayoutPanel1
             // 
-            tableLayoutPanel1.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             tableLayoutPanel1.ColumnCount = 3;
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 112F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 112F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 98F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 98F));
             tableLayoutPanel1.Controls.Add(btnSaveFolder, 1, 0);
             tableLayoutPanel1.Controls.Add(btnBrowse, 2, 0);
             tableLayoutPanel1.Controls.Add(tableLastRow, 0, 0);
-            tableLayoutPanel1.Location = new Point(38, 117);
+            tableLayoutPanel1.Dock = DockStyle.Fill;
+            tableLayoutPanel1.Location = new Point(34, 115);
             tableLayoutPanel1.Margin = new Padding(2);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 1;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.Size = new Size(610, 30);
+            tableLayoutPanel1.Size = new Size(532, 31);
             tableLayoutPanel1.TabIndex = 18;
             // 
             // tableLastRow
             // 
             tableLastRow.ColumnCount = 2;
             tableLastRow.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLastRow.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 143F));
+            tableLastRow.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 106F));
             tableLastRow.Controls.Add(chkSaveSettings, 1, 0);
             tableLastRow.Controls.Add(lblStatus, 0, 0);
             tableLastRow.Dock = DockStyle.Fill;
@@ -321,36 +320,40 @@
             tableLastRow.Name = "tableLastRow";
             tableLastRow.RowCount = 1;
             tableLastRow.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLastRow.Size = new Size(382, 26);
+            tableLastRow.Size = new Size(332, 27);
             tableLastRow.TabIndex = 19;
             // 
             // tableLayoutPanelAll
             // 
             tableLayoutPanelAll.ColumnCount = 3;
-            tableLayoutPanelAll.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 36F));
+            tableLayoutPanelAll.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 32F));
             tableLayoutPanelAll.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanelAll.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 36F));
-            tableLayoutPanelAll.Controls.Add(tableLayoutPanel1, 1, 3);
-            tableLayoutPanelAll.Controls.Add(tableLayoutPanelButtons1, 1, 2);
-            tableLayoutPanelAll.Controls.Add(tableLayoutPanelFolder, 1, 1);
+            tableLayoutPanelAll.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 32F));
+            tableLayoutPanelAll.Controls.Add(tableLayoutPanel1, 1, 6);
+            tableLayoutPanelAll.Controls.Add(tableLayoutPanelButtons1, 1, 4);
+            tableLayoutPanelAll.Controls.Add(tableLayoutPanelFolder, 1, 2);
             tableLayoutPanelAll.Dock = DockStyle.Fill;
             tableLayoutPanelAll.Location = new Point(0, 0);
             tableLayoutPanelAll.Margin = new Padding(2);
             tableLayoutPanelAll.Name = "tableLayoutPanelAll";
-            tableLayoutPanelAll.RowCount = 5;
+            tableLayoutPanelAll.RowCount = 9;
             tableLayoutPanelAll.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanelAll.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
-            tableLayoutPanelAll.RowStyles.Add(new RowStyle(SizeType.Absolute, 36F));
-            tableLayoutPanelAll.RowStyles.Add(new RowStyle(SizeType.Absolute, 36F));
+            tableLayoutPanelAll.RowStyles.Add(new RowStyle(SizeType.Absolute, 10F));
+            tableLayoutPanelAll.RowStyles.Add(new RowStyle(SizeType.Absolute, 35F));
+            tableLayoutPanelAll.RowStyles.Add(new RowStyle(SizeType.Absolute, 10F));
+            tableLayoutPanelAll.RowStyles.Add(new RowStyle(SizeType.Absolute, 35F));
+            tableLayoutPanelAll.RowStyles.Add(new RowStyle(SizeType.Absolute, 10F));
+            tableLayoutPanelAll.RowStyles.Add(new RowStyle(SizeType.Absolute, 35F));
+            tableLayoutPanelAll.RowStyles.Add(new RowStyle(SizeType.Absolute, 10F));
             tableLayoutPanelAll.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanelAll.Size = new Size(686, 189);
+            tableLayoutPanelAll.Size = new Size(600, 172);
             tableLayoutPanelAll.TabIndex = 19;
             // 
             // MainForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(686, 189);
+            ClientSize = new Size(600, 172);
             Controls.Add(tableLayoutPanelAll);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(2);
@@ -372,7 +375,7 @@
         #endregion
 
         private Button btnArchive;
-        private Label lblMoon;
+        private Label lblSelect;
         private TextBox txtFolder;
         private Button btnBrowse;
         private Button btnRestore;

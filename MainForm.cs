@@ -1,5 +1,6 @@
-using System.IO.Compression;
 using SAVE_FOLDERS;
+using System.IO.Compression;
+using System.Windows.Forms;
 
 namespace SaveFolders
 {
@@ -7,6 +8,20 @@ namespace SaveFolders
     {
         private List<SaveFolderInfo> mFolders = new();
         private EditorFolderName mEditorFolderName = new();
+
+        private static string appData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+
+        private static string folderResolveProjectsDaVinci = Path.Combine(
+            appData,
+            "Blackmagic Design",
+            "DaVinci Resolve",
+            "Support",
+            "Resolve Project Library",
+            "Resolve Projects",
+            "Users",
+            "guest",
+            "Projects"
+        );
 
         /*
          * Registers default folders for the application.
@@ -32,6 +47,12 @@ namespace SaveFolders
             //{
             //    mFolders.Add(new(folderExperimental, "experimental"));
             //}
+
+            if (!mFolders.Any(f =>
+                string.Equals(f.Path, folderResolveProjectsDaVinci, StringComparison.OrdinalIgnoreCase)))
+            {
+                mFolders.Add(new(folderResolveProjectsDaVinci, "DaVinci Resolve 20"));
+            }
 
             if (cmbFolder.Items.Count > 0)
                 txtFolder.Text = mFolders[cmbFolder.SelectedIndex].Path;
@@ -176,6 +197,7 @@ namespace SaveFolders
                     {
                         UpdateStatus("Error archiving folder.");
                         MessageBox.Show("Error archiving folder: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        btnArchive.Enabled = true;
                     }
                 }
                 else
